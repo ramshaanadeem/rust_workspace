@@ -1,5 +1,6 @@
 use piston_window::types::Color;
-use piston_window::{rectangle, Context, G2d};
+use piston_window::{rectangle, text, Context, G2d, Glyphs, Transformed};
+extern crate find_folder;
 
 const BLOCK_SIZE: f64 = 25.0;
 
@@ -48,6 +49,36 @@ pub fn draw_rectangle(
     );
 }
 
-// pub fn draw_obstacles() {
-//     line(color, 5.00, [0.0,0.0,15.0,15.0], transform, gl)
-// }
+pub fn render_score(score: i32, glyphs: &mut Glyphs, con: &Context, g: &mut G2d) {
+    let score_str: String = score.to_string();
+    let points: &str = &score_str;
+    text(
+        [1.0; 4],
+        40,
+        "GAME OVER",
+        glyphs,
+        con.transform.trans_pos([130.0; 2]),
+        g,
+    )
+    .unwrap();
+    let msg: &str = "Your Score: ";
+    let together = &(format!("{}{}", msg, points));
+    text(
+        [1.0; 4],
+        30,
+        together,
+        glyphs,
+        con.transform.trans_pos([150.0, 200.0]),
+        g,
+    )
+    .unwrap();
+    text(
+        [1.0; 4],
+        20,
+        "Restarting in 3 seconds...",
+        glyphs,
+        con.transform.trans_pos([120.0, 300.0]),
+        g,
+    )
+    .unwrap();
+}

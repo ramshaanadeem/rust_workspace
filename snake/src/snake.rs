@@ -28,7 +28,6 @@ struct Block {
     x: i32,
     y: i32,
 }
-
 pub struct Snake {
     direction: Direction,
     body: LinkedList<Block>,
