@@ -49,9 +49,26 @@ pub fn draw_rectangle(
     );
 }
 
+pub fn scoreboard(score:i32, glyphs:&mut Glyphs, con: &Context, g: &mut G2d) {
+    let msg: &str = "Score: ";
+    let together = &(format!("{}{}", msg, score));
+    
+    text(
+        [1.0; 4],
+        20,
+        together,
+        glyphs,
+        con.transform.trans_pos([385.0, 19.0]),
+        g,
+    )
+    .unwrap();
+}
+
+
 pub fn render_score(score: i32, glyphs: &mut Glyphs, con: &Context, g: &mut G2d) {
-    let score_str: String = score.to_string();
-    let points: &str = &score_str;
+    let msg: &str = "Your Score: ";
+    let together = &(format!("{}{}", msg, score));
+    
     text(
         [1.0; 4],
         40,
@@ -61,9 +78,7 @@ pub fn render_score(score: i32, glyphs: &mut Glyphs, con: &Context, g: &mut G2d)
         g,
     )
     .unwrap();
-    let msg: &str = "Your Score: ";
-    let together = &(format!("{}{}", msg, points));
-    text(
+   text(
         [1.0; 4],
         30,
         together,
