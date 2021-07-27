@@ -1,4 +1,4 @@
-use crate::draw::{draw_block, draw_rectangle, render_score};
+use crate::draw::{draw_block, draw_rectangle, render_score,scoreboard};
 use crate::snake::{Direction, Snake};
 use piston_window::types::Color;
 use piston_window::*;
@@ -70,7 +70,7 @@ impl Game {
         draw_rectangle(BORDER_COLOR, 0, self.height - 1, self.width, 1, con, g);
         draw_rectangle(BORDER_COLOR, 0, 0, 1, self.height, con, g);
         draw_rectangle(BORDER_COLOR, self.width - 1, 0, 1, self.height, con, g);
-
+        scoreboard(self.score, glyphs, con, g);
         if self.game_over {
             draw_rectangle(GAMEOVER_COLOR, 0, 0, self.width, self.height, con, g);
             render_score(self.score, glyphs, con, g);
